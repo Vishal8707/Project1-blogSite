@@ -58,7 +58,20 @@ let {fname, lname, title, email, password } = data;
     }
 }
  
+//________post api: Login author
 
+// let LoginAuthor = async function (req, res) {
+//   try {
+//   let email = req.body.email;
+//   let password = req.body.password;
+//   if (Object.keys (req.body).length == 0) { // Object.keys () array of keys will return
+//   return res.status (400).send({status: false, message: "Please provide email and password"});
+//   }
+//   let checkData = await authorModel.findOne({ email: email, password: password });
+// if (!checkData) {
+// return res.status (400).send({status: false,msg: "email or the password is not inter"})
+// }
+// let token = jwt.sign({
     
     
 
@@ -73,6 +86,6 @@ let {fname, lname, title, email, password } = data;
 
 
 
-module.exports.createAuthor = createAuthor
+module.exports.createAuthor=createAuthor
 
 

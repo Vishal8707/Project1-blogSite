@@ -16,12 +16,35 @@ const blogController = require("../controllers/blogController");
 
 // router.post("/blogs", auth.authentication, blogController.createBlog);
 
+//__ get api (blog document)_
+
+//router.get("/blogs", auth.authentication, blogController.getBlogs);
+
+// put api (blog updation) 
+
+//router.put("/blogs/:blogId", auth.authentication, auth. authorization, blogController.updatedBlog);
+
+// delete api-1
+
+//router.delete("/blogs/:blogId", auth.authentication, auth. authorization, blogController.deletedBlog);
+
+//delete api-2
+
+//router.delete("/blogs", auth. authentication, auth. authoriseByQuery, blogController.deleteByQueryParams)
+
+//==
+
 router.post("/blog",blogController.createBlog)
 
 //get api (blog document) >>>
 
-//router.get("/blog",blogController.getBlog)
-router.get("/blog",blogController.filterBlog)
+router.get("/blog",blogController.getBlogs)
+//router.get("/blog",blogController.filterBlog)
+
+router.put("/updatedBlog/:blogId",blogController.updatedBlog)
+
+
+router.delete("/deletedBlog/:blogId",blogController.deletedBlog)
 
 
 
