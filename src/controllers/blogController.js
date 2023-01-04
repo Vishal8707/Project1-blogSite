@@ -29,26 +29,6 @@ let create = await blogModel.create(data)
  
 }
 
-// const getBlogs = async function(req,res){
-
-// let data = await blogModel.find({isDeleted:false, isPublished:true})
-// if(!data)  return res.status(404).send({status:false, msg: "not match any document with this id" })
-
-// res.status(200).send({status:true,data:data})
-// }
-
-
-
-// const filterBlog = async function(req,res){
-//     let data = req.query
-//     let {authorId, category, tag, subcategory } = data;
-//     let myData = await blogModel.find({$or:[{authorId:authorId}, {category:category}, {tag:tag}, {subcategory:subcategory}]})
-//     if(!myData)  return res.status(404).send({status:false, msg: "not match any document with this id" })
-
-//     res.status(200).send({status:true,data:myData})
-// }
-
-
 // _get api >>>
 
 const getBlogs = async (req, res) => {
@@ -126,12 +106,10 @@ data:deletedBlog});
 
 //_____delete blogs api 2 by given fields 
 
-//Delete blog documents by category, authorid, tag name, subcategory name, unpublished
-
 const deleteByQueryParams = async function (req, res) {
 try{
 let data = req.query;
-const deleteByQuery = await blogModel.updateMany({ $and: [data,{authorId: req.id}, { isDeleted: false }] },{ $set: { isDeleted: true ,deletedAt: new Date()} }, { new: true, upsert: true}) 
+const deleteByQuery = await blogModel.updateMany({ $and: [data, { isDeleted: false }] },{ $set: { isDeleted: true ,deletedAt: new Date()} }, { new: true, upsert: true}) 
 let count = deleteByQuery.modifiedCount
 if (deleteByQuery.modifiedCount==0) {
 return res.status (404).send({ status: false, msg: "No Blog Found"})
