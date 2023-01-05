@@ -22,15 +22,15 @@ router.get("/blogs", auth.authentication, blogController.getBlogs);
 
 // put api (blog updation) 
 
-router.put("/blogs/:blogId", auth.authentication, auth. authorization, blogController.updatedBlog);
+router.put("/blogs/:blogId", auth.authentication, auth.authorization, blogController.updatedBlog);
 
 // delete api-1
 
-router.delete("/blogs/:blogId", auth.authentication, auth. authorization, blogController.deletedBlog);
+router.delete("/blogs/:blogId", auth.authentication, auth.authorization, blogController.deletedBlog);
 
 //delete api-2
 
-router.delete("/blogs", auth.authentication, blogController.deleteByQueryParams)
+router.delete("/blogs", auth.authentication, auth.authoriseByQuery, blogController.deleteByQueryParams)
 
 
 
