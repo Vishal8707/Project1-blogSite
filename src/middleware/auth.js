@@ -32,7 +32,7 @@ const authorization = async function (req, res, next) {
         let blogId = req.params.blogId;
         let checkBlogId = await blogModel.findById(blogId)
         if (!checkBlogId)
-            return res.status(404).send({ status: false, message: "Blog not Found" })
+            return res.status(400).send({ status: false, message: "Blog not Found" })
         if (checkBlogId.authorId != authorLoggedIn)
             return res.status(403).send({ status: false, msg: "loggedin author not allowed to modify changes" });
         next();
@@ -70,6 +70,5 @@ const authoriseByQuery = async function (req, res, next) {
     }
 
 };
-
 
 module.exports = { authentication, authorization, authoriseByQuery }

@@ -14,23 +14,13 @@ const isValidEmail = function (email) {
   return emailRegex.test(email);
 };
 
-
-//Value Validation
-
-const isEmpty = function (value) {
-  if (typeof value === "undefined" || value === null) return false;
-  if (typeof value === "string" && value.trim().length == 0) return false;
-  return true;
-};
-
-
-const isValidObjectId = (objectId) => {
+const isValidObjectId = function (objectId){
   return mongoose.Types.ObjectId.isValid(objectId);
 };
 
 module.exports = {
-  isEmpty,
   isValidName,
   isValidEmail,
   isValidObjectId,
+  
 }
