@@ -10,7 +10,6 @@ const createAuthor = async function (req, res) {
     const data = req.body;
     let { fname, lname, title, email, password } = data;
     
-
     if (Object.keys(data).length == 0) {
       return res
         .status(400)
